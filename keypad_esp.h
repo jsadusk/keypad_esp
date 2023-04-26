@@ -28,11 +28,11 @@ public:
 
     void loop() override {
         std::string keys;
-        for (const size_t col = 0; col < columnPins.size(); ++col) {
+        for (size_t col = 0; col < columnPins.size(); ++col) {
             const int colPin = columnPins[col];
             digitalWrite(colPin, HIGH);
 
-            for (const size_t row = 0; row < rowPins.size(); ++row) {
+            for (size_t row = 0; row < rowPins.size(); ++row) {
                 const int rowPin = rowPins[row];
                 
                 if (digitalRead(rowPin)) {
