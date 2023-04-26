@@ -10,12 +10,12 @@ public:
     const std::array<int, 4> rowPins {5, 14, 12, 13};
     const int buzzPin = 15;
     const int ledPin = 1;
-    const std::array<const std::array<char, 3>, 4> keys {
+    const std::array<std::array<char, 3>, 4> keys {{
         {'1', '2', '3'},
         {'4', '5', '6'},
         {'7', '8', '9'},
         {'*', '0', '#'}
-    };
+        }};
     void setup() override {
         for (const int pin : columnPins) {
             pinMode(pin, OUTPUT);
@@ -28,11 +28,11 @@ public:
 
     void loop() override {
         std::string keys;
-        for (const size_t col = 0; i < columnPins.size(); ++col) {
+        for (const size_t col = 0; col < columnPins.size(); ++col) {
             const int colPin = columnPins[col];
             digitalWrite(colPin, HIGH);
 
-            for (const size_t row = 0; i < rowPins.size(); ++row) {
+            for (const size_t row = 0; row < rowPins.size(); ++row) {
                 const int rowPin = rowPins[row];
                 
                 if (digitalRead(rowPin)) {
