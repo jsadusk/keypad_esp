@@ -27,7 +27,7 @@ public:
     }
 
     void loop() override {
-        std::string keys;
+        std::string found;
         for (size_t col = 0; col < columnPins.size(); ++col) {
             const int colPin = columnPins[col];
             digitalWrite(colPin, HIGH);
@@ -36,17 +36,17 @@ public:
                 const int rowPin = rowPins[row];
                 
                 if (digitalRead(rowPin)) {
-                    keys.push_back(keys[row][col]);
+                    found.push_back(keys[row][col]);
                 }
             }
             digitalWrite(colPin, LOW);
         }
 
-        if (keys.size() != 1) {
+        if (found.size() != 1) {
             return;
         }
 
-        code.push_back(keys.front());
+        code.push_back(found.front());
         if (code.size() == 4) {
             fire_homeassistant_event("keypad", {{"code", code}});
             code.clear();
