@@ -1,14 +1,15 @@
 #include "esphome.h"
 #include <array>
+#include <string>
 
 class KeypadComponent : public Component, public CustomAPIDevice {
 public:
     const int numCols = 3;
     const int numRows = 4;
     const std::array<int, 3> columnPins {4, 0, 2};
-    const std::array<int 4> rowPins {5, 14, 12, 13};
-    const int buzzPin 15;
-    const int ledPin 1;
+    const std::array<int, 4> rowPins {5, 14, 12, 13};
+    const int buzzPin = 15;
+    const int ledPin = 1;
     const std::array<const std::array<char, 3>, 4> keys {
         {'1', '2', '3'},
         {'4', '5', '6'},
